@@ -49,7 +49,6 @@ def hello_rvce():
             return resp
     elif request.method == 'HEAD':
         print("I am here")
-        response = app.make_response('flag_pwned')
         response.headers['Content-Type'] = 'flag_pwned'
         response.headers['Content-Length'] = '0'
         return response
