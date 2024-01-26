@@ -38,7 +38,7 @@ def getcookie():
 @app.route("/", methods=['GET', 'HEAD'])
 def hello_rvce():
     if request.method == 'GET':
-        if getcookie()=="YWRtaW46MQ==":
+        if getcookie()=="YWRtaW46MQ===":
             return render_template('admin.html', jobs=JOBS, company_name='RVCE')
         else:
             rendered = render_template('home.html',
@@ -49,6 +49,7 @@ def hello_rvce():
             return resp
     elif request.method == 'HEAD':
         print("I am here")
+        response = app.make_response()
         response.headers['Content-Type'] = 'flag_pwned'
         response.headers['Content-Length'] = '0'
         return response
