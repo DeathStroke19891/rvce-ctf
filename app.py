@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify, make_response, request
+from flask import Flask, render_template, jsonify, make_response, request, send_from_directory
 
 app = Flask(__name__)
 
@@ -53,6 +53,14 @@ def hello_rvce():
         response.headers['Content-Type'] = 'flag_pwned'
         response.headers['Content-Length'] = '0'
         return response
+
+@app.route('/robots.txt')
+def robots():
+    return send_from_directory('static', 'robots.txt')
+
+@app.route('/secret_key')
+def secret():
+    return render_template('secret.html')
 
 @app.route("/api/jobs")
 def list_jobs():
